@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>DE-VE-DE Movie Tracker</title>
+    
+</head>
+<body>
+    <div class="container">
+        <section id="searchSection">
+            <h2>Search Movies</h2>
+            <form id="searchMovieForm">
+                <input type="text" id="searchTitle" placeholder="Search">
+                <button type="button" id="searchMovieBtn">Search Title</button>
+            </form>
+        </section>
+
+        <section id="addMovieSection">
+            <h2>Add Movie</h2>
+
+            <form id="addMovieForm">
+                <input type="text" id="title" required placeholder="Movie title">
+                <input type="text" id="genre" placeholder="Genre">
+                <input type="text" id="releaseDate" placeholder="Release date">
+                <label for="watched">Movie Status</label>
+                <select id="watched">
+                    <option value="true">Watched</option>
+                    <option value="false">Not Watched</option>
+                </select>
+                <button type="button" id="addMovie">Add Movie</button>
+            </form>
+        </section>
+        <section id="searchContainer">
+            <h2>See Watched Movie List</h2>
+            <button id="watchedMovies">See Watched Movies</button>
+            <ul id="watchedMoviesList"></ul>
+        </section>
+
+        <section id="deleteMovieSection">
+            <h2>Delete Movie</h2>
+            <form id="deleteMovieForm">
+                <label for="movieToDelete">Select Movie</label>
+              <select id="movieToDelete" required>
+                <option value="">Select Movie to Delete</option>
+                <!-- Movie titles will be dynamically added here -->
+              </select>
+              <button type="button" id="deleteBtn">Delete Movie</button>
+            </form>
+          </section>
+
+          <section id="updateMovieSection">
+            <h2>Update Movie Status</h2>
+            <form id="updateMovieForm">
+                <label for="movieToUpdate">Select Movie</label>
+              <select id="movieToUpdate">
+                <option value="" disabled selected> Select Movie to Update</option>
+                <!-- Movie titles will be dynamically added here -->
+              </select>
+          
+              <label for="status">Select Status:</label>
+              <select id="status" required>
+                <option value="true">Watched</option>
+                <option value="false">Not Watched</option>
+              </select>
+          
+              <button type="button" id="updateBtn">Update Status</button>
+            </form>
+          </section>
+    </div>
+
+    <h2>Movie List</h2>
+    <ul id="movieList"></ul>
+
+    <script type="module" src="index.js"></script>
+
+</body>
+</html>
