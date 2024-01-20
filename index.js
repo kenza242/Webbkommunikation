@@ -15,7 +15,7 @@ const firebaseConfig = {
   measurementId: "G-JDZHRPNE5B"
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore();
@@ -40,7 +40,7 @@ async function addMovieFirestore(title, genre, releaseDate, watched) {
   }
 }
 
-// Event listener for the "Add Movie" button
+
 addBtn.addEventListener("click", async () => {
   var title = document.getElementById("title").value;
   var genre = document.getElementById("genre").value;
@@ -73,8 +73,7 @@ async function getMoviesFirestore() {
 }
 
 
-// Function to display all movies
-// Function to display movies
+
 function displayMoviesFirestore(moviesArray) {
   const movieList = document.getElementById("movieList");
   movieList.innerHTML = ``;
@@ -88,7 +87,7 @@ function displayMoviesFirestore(moviesArray) {
 
 getMoviesFirestore()
 
-// Function to search for a movie in Firestore
+// Sök efter film
 async function searchMovieFirestore(title) {
   try {
     const moviesCollection = collection(db, 'movies');
@@ -114,14 +113,14 @@ async function searchMovieFirestore(title) {
   }
 }
 
-// Event listener for the "Search Title" button
+
 const searchBtn = document.getElementById("searchMovieBtn");
 searchBtn.addEventListener("click", () => {
   const titleData = document.getElementById("searchTitle").value;
   searchMovieFirestore(titleData);
 });
 
-// Get all the movie title to the dropdown
+
 async function populateDeleteDropdownFirestore() {
   try {
     const moviesCollection = collection(db, 'movies');
@@ -129,7 +128,7 @@ async function populateDeleteDropdownFirestore() {
 
     const selectElement = document.getElementById("movieToDelete");
 
-    // Clear existing options
+    
     selectElement.innerHTML = '';
 
     querySnapshot.forEach((doc) => {
@@ -144,8 +143,7 @@ async function populateDeleteDropdownFirestore() {
   }
 }
 
-// Example usage:
-// Call the function to populate the delete dropdown
+
 populateDeleteDropdownFirestore();
 
 // Function to delete a movie from Firestore
@@ -180,7 +178,7 @@ async function deleteMovieFirestore(title) {
   }
 }
 
-// Event listener for the "Delete Movie" button
+
 const deleteBtn = document.getElementById("deleteBtn");
 deleteBtn.addEventListener("click", () => {
   const selectedTitle = document.getElementById("movieToDelete").value;
@@ -188,7 +186,7 @@ deleteBtn.addEventListener("click", () => {
 });
 
 
-// Function to populate the update dropdown with movies from Firestore
+
 async function populateUpdateDropdownFirestore() {
   try {
     const moviesCollection = collection(db, 'movies');
@@ -196,7 +194,7 @@ async function populateUpdateDropdownFirestore() {
 
     const selectElement = document.getElementById("movieToUpdate");
 
-    // Clear existing options
+    
     selectElement.innerHTML = '';
 
     querySnapshot.forEach((doc) => {
@@ -211,11 +209,10 @@ async function populateUpdateDropdownFirestore() {
   }
 }
 
-// Example usage:
-// Call the function to populate the update dropdown
+
 populateUpdateDropdownFirestore();
 
-// Function to update the watched status of a movie in Firestore
+
 async function updateMovieStatusFirestore(title, newStatus) {
   try {
     const moviesCollection = collection(db, 'movies');
@@ -244,7 +241,7 @@ async function updateMovieStatusFirestore(title, newStatus) {
   }
 }
 
-// Event listener for the "Update Status" button
+
 const updateBtn = document.getElementById("updateBtn");
 updateBtn.addEventListener("click", () => {
   const selectedTitle = document.getElementById("movieToUpdate").value;
@@ -254,7 +251,7 @@ updateBtn.addEventListener("click", () => {
 });
 
 
-// Function to get and display watched movies from Firestore
+
 async function getWatchedMoviesFirestore() {
   try {
     const moviesCollection = collection(db, 'movies');
@@ -276,11 +273,10 @@ async function getWatchedMoviesFirestore() {
   }
 }
 
-// Example usage:
-// Call the function to retrieve and display watched movies
+
 // getWatchedMoviesFirestore();
 
-// Function to display watched movies
+
 function displayWatchedMovies(moviesArray) {
   const movieList = document.getElementById("watchedMoviesList");
   movieList.innerHTML = ``;
@@ -292,7 +288,7 @@ function displayWatchedMovies(moviesArray) {
   });
 }
 
-// Event listener for the "See Watched Movies" button
+
 const watchMoviesBtn = document.getElementById("watchedMovies");
 watchMoviesBtn.addEventListener("click", () => {
   getWatchedMoviesFirestore()
