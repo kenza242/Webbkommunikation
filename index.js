@@ -22,9 +22,21 @@ const db = getFirestore();
 
 const addBtn = document.getElementById("addMovie");
 
-// Add movies to firestore
+
 async function addMovieFirestore(title, genre, releaseDate, watched) {
   try {
+    
+    const querySnapshot = await getDocs(collection(db, "movies"));
+    const existingMovie = querySnapshot.docs.find(doc => doc.data().title === title);
+
+    
+    if (existingMovie) {
+      console.log("Movie already exists in the database");
+      alert("Movie with the same title already exists in the database");
+      return;
+    }
+
+    
     const moviesCollection = collection(db, "movies");
     const newMovieDoc = await addDoc(moviesCollection, {
       title: title,
@@ -293,3 +305,21 @@ const watchMoviesBtn = document.getElementById("watchedMovies");
 watchMoviesBtn.addEventListener("click", () => {
   getWatchedMoviesFirestore()
 });
+   
+
+
+
+
+ 
+       
+  
+
+
+      
+  
+     
+
+
+
+   
+ 
